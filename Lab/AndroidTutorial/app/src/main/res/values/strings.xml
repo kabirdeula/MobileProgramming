@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AndroidTutorial</string>
+    <string name="text_question">Sanisha loves Chandan</string>
+    <string name="text_true">True</string>
+    <string name="text_false">False</string>
+    <string name="text_true_answer">No Chandan loves Sanisha</string>
+    <string name="text_false_answer">Yes Sanisha does love Chandan</string>
+    <string name="text_return">Return</string>
+</resources>

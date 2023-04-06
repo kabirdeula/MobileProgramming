@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">FirstApp</string>
+    <string name="p">Principle</string>
+    <string name="t">Time</string>
+    <string name="r">Rate</string>
+
+    <string-array name="day">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+</resources>

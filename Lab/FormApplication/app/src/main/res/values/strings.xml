@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">FormApplication</string>
+    <string name="text_label">Student Form</string>
+    <string name="text_student_id">Enter Student ID</string>
+    <string name="text_student_name">Enter Student Name</string>
+    <string name="text_student_gender">Gender</string>
+    <string name="text_gender_male">Male</string>
+    <string name="text_gender_female">Female</string>
+    <string name="text_student_programs">Programs</string>
+    <string name="text_results">Results</string>
+
+    <string name="button_submit">Submit</string>
+
+    <string-array name="array_student_programs">
+        <item>BBM</item>
+        <item>BCA</item>
+        <item>BHM</item>
+        <item>BIM</item>
+        <item>CSIT</item>
+    </string-array>
+</resources>
+

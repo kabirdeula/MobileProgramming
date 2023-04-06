@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_label"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/edit_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_label"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:hint="@string/text_student_id"
+        android:textSize="20sp"
+        android:importantForAutofill="no"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_id"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:hint="@string/text_student_name"
+        android:textSize="20sp"
+        android:autofillHints="name"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/text_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_student_gender"
+        android:textSize="20sp"
+        android:layout_below="@+id/edit_name"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_name"
+        android:orientation="horizontal"
+        android:layout_toEndOf="@+id/text_gender">
+        <RadioButton
+            android:id="@+id/radio_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_gender_male"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="16sp"/>
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_gender_female"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/text_program"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_student_programs"
+        android:textSize="20sp"
+        android:layout_below="@+id/radio_group"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp" />
+    <Spinner
+        android:id="@+id/spinner_program"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:entries="@array/array_student_programs"
+        android:layout_below="@+id/radio_group"
+        android:layout_toEndOf="@+id/text_program"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp" />
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_program"
+        android:text="@string/button_submit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/text_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_results"
+        android:textSize="20sp"
+        android:layout_below="@id/button_submit"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

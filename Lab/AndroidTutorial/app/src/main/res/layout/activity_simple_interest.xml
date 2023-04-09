@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/principle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/text_principle"
+        android:importantForAutofill="no"
+        android:textSize="20sp"
+        android:inputType="number"
+        android:layout_below="@+id/text_name"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/text_time"
+        android:layout_marginBottom="20dp"
+        android:importantForAutofill="no"
+        android:textSize="20sp"
+        android:inputType="number"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/principle"/>
+
+    <EditText
+        android:id="@+id/rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:textSize="20sp"
+        android:importantForAutofill="no"
+        android:hint="@string/text_rate"
+        android:inputType="number"
+        android:layout_below="@+id/time"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/btn_calculate"
+        android:layout_below="@+id/rate"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/text_results"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calculate"
+        android:text="@string/text_results"
+        android:textSize="20sp"
+        android:layout_marginStart="25dp"/>
+</RelativeLayout>

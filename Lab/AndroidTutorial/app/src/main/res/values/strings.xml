@@ -5,9 +5,9 @@
     <string name="text_false">False</string>
     <string name="text_true_answer">No Chandan loves Sanisha</string>
     <string name="text_false_answer">Yes Sanisha does love Chandan</string>
-    <string name="text_return">Return</string>
     <string name="text_principle">Principle</string>
     <string name="text_time">Time</string>
     <string name="text_rate">Rate</string>
     <string name="btn_calculate">Calculate</string>
+    <string name="text_results">Results</string>
 </resources>

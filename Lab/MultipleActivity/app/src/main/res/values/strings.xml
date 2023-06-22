@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MultipleActivity</string>
+    <string name="title1">First Activity</string>
+    <string name="title2">Second Activity</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_back">Back</string>
+</resources>

@@ -3,16 +3,16 @@
 | S.N. | Topic                                                                      | Date       | Status |
 | :--: | :------------------------------------------------------------------------- | :--------- | :----- |
 |  1.  | [Development of Hello World Application](#lab-1)                           | 2023/04/11 | ToDo   |
-|  2.  | Implementation of Fragments                                                | 2023/04/16 | ToDo   |
-|  3.  | Implementation of working With multiple activities.                        | 2023/04/28 | ToDo   |
-|  4.  | Create User Registration app which stores the information in the database. | 2023/05/02 | ToDo   |
-|  5.  | Implementation of Options Menu                                             | 2023/05/09 | ToDo   |
-|  6.  | Implementation of Context Menu                                             | 2023/05/12 | ToDo   |
-|  7.  | Implementation of Popup Menu                                               | 2023/05/16 | ToDo   |
-|  8.  | Implementation of Dialog Box                                               | 2023/05/30 | ToDo   |
-|  9.  | Implementation of ListView                                                 | 2023/06/02 | ToDo   |
-| 10.  | Implementation of GridView                                                 | 2023/06/06 | ToDo   |
-| 11.  | Implementation of RecyclerView                                             | 2023/06/09 | ToDo   |
+|  2.  | [Implementation of working With multiple activities.](#lab-2)              | 2023/04/16 | ToDo   |
+|  3.  | Implementation of Fragments                                                | 2023/04/28 | ToDo   |
+|  4.  | Implementation of Options Menu                                             | 2023/05/02 | ToDo   |
+|  5.  | Implementation of Context Menu                                             | 2023/05/09 | ToDo   |
+|  6.  | Implementation of Popup Menu                                               | 2023/05/12 | ToDo   |
+|  7.  | Implementation of Dialog Box                                               | 2023/05/16 | ToDo   |
+|  8.  | Implementation of ListView                                                 | 2023/05/30 | ToDo   |
+|  9.  | Implementation of GridView                                                 | 2023/06/02 | ToDo   |
+| 10.  | Implementation of RecyclerView                                             | 2023/06/06 | ToDo   |
+| 11.  | Create User Registration app which stores the information in the database. | 2023/06/09 | ToDo   |
 
 ## Lab 1
 
@@ -58,21 +58,126 @@ activity_main.xml
 
 [Go to Top](#lab)
 
-[Main File](/Lab/)
+[Main File](/Lab/HelloWorld/app/src/main/)
 
 ## Lab 2
 
 ### Source Code
 
+MainActivity.java
 ```java
+package com.mobileprogramming.multipleactivity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    Button btn_next;
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btn_next = findViewById(R.id.btn_next);
+        btn_next.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        });
+    }
+}
+```
+
+SecondActivity.java
+```java
+package com.mobileprogramming.multipleactivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SecondActivity extends AppCompatActivity {
+    Button btn_back;
+    @Override
+    protected void onCreate(Bundle b){
+        super.onCreate(b);
+        setContentView(R.layout.activity_second);
+
+        btn_back = findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(view -> {
+            Intent intent2 = new Intent(SecondActivity.this, MainActivity.class);
+            startActivity(intent2);
+        });
+    }
+}
+```
+
+activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="First Activity"
+        android:textSize="32sp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title1"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:text="Next"/>
+</RelativeLayout>
+```
+
+activity_second.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Second Activity"
+        android:textSize="32sp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/tv_title2"
+        android:layout_margin="10dp"
+        android:text="Back" />
+</RelativeLayout>
 ```
 
 ### Output
 
+![Output1](/Lab/images/0201.jpg)
+![Output2](/Lab/images/0202.jpg)
+
 [Go to Top](#lab)
 
-[Main File](/Lab/)
+[Main File](/Lab/MultipleActivity/app/src/main/)
 
 ## Lab 3
 

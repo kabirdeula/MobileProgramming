@@ -6,10 +6,10 @@
 |  2.  | [Implementation of working With multiple activities.](#lab-2)              | 2023/04/16 | ToDo   |
 |  3.  | [Implementation of Fragments.](#lab-3)                                     | 2023/04/28 | ToDo   |
 |  4.  | [Implementation of Options Menu.](#lab-4)                                  | 2023/05/02 | ToDo   |
-|  5.  | [Implementation of Context Menu.](#lab-5)                                   | 2023/05/09 | ToDo   |
+|  5.  | [Implementation of Context Menu.](#lab-5)                                  | 2023/05/09 | ToDo   |
 |  6.  | [Implementation of Popup Menu.](#lab-6)                                    | 2023/05/12 | ToDo   |
-|  7.  | Implementation of Dialog Box                                               | 2023/05/16 | ToDo   |
-|  8.  | Implementation of ListView                                                 | 2023/05/30 | ToDo   |
+|  7.  | [Implementation of Dialog Box.](#lab-7)                                    | 2023/05/16 | ToDo   |
+|  8.  | [Implementation of ListView.](#lab-8)                                      | 2023/05/30 | ToDo   |
 |  9.  | Implementation of GridView                                                 | 2023/06/02 | ToDo   |
 | 10.  | Implementation of RecyclerView                                             | 2023/06/06 | ToDo   |
 | 11.  | Create User Registration app which stores the information in the database. | 2023/06/09 | ToDo   |
@@ -628,13 +628,68 @@ activity_main.xml
 
 ### Source Code
 
+MainActivity.java
 ```java
+package com.mobileprogramming.listviewdemo;
 
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ListView list_view = findViewById(R.id.list_view);
+
+        String names[] = {"Mobile Programming", "Distributed System", "Applied Economics", "Advanced Java Programming", "Network Programming"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, R.id.list_item, names);
+        list_view.setAdapter(adapter);
+    }
+}
 ```
+
+activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>
+```
+
+activity_listview.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="10sp"/>
+</RelativeLayout>
+```
+
+![Output](/Lab/images/0800.jpg)
 
 [Go to Top](#lab)
 
-[Main File](/Lab/)
+[Main File](/Lab/ListViewDemo/app/src/main/)
 
 ## Lab 9
 

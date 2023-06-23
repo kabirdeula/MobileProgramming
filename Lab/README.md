@@ -361,7 +361,7 @@ activity_main.xml
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/title"
+        android:text="Options Menu Demo"
         android:textSize="32sp"
         android:textStyle="bold"
         android:layout_centerInParent="true"/>
@@ -375,10 +375,10 @@ menu_main.xml
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/item1"
-        android:title="@string/item1"/>
+        android:title="Option 1"/>
 
     <item android:id="@+id/item2"
-        android:title="@string/item2"/>
+        android:title="Option 2"/>
 </menu>
 ```
 
@@ -394,15 +394,89 @@ menu_main.xml
 
 ### Source Code
 
+MainActivity.java
 ```java
+package com.mobileprogramming.contextmenudemo;
 
+import android.os.Bundle;
+import android.view.*;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    private TextView tv_title;
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        tv_title = findViewById(R.id.tv_title);
+
+        registerForContextMenu(tv_title);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo){
+        super.onCreateContextMenu(menu, view, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if (id == R.id.item1) {
+            Toast.makeText(this, "Option 1 clicked", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.item2) {
+            Toast.makeText(this, "Option 2 clicked", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+}
+```
+
+activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Context Menu Demo"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>
+```
+
+menu_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/item1"
+        android:title="Item 1"/>
+
+    <item android:id="@+id/item2"
+        android:title="Item 2"/>
+</menu>
 ```
 
 ### Output
 
+![Output](/Lab/images/0500.jpg)
+
 [Go to Top](#lab)
 
-[Main File](/Lab/)
+[Main File](/Lab/ContextMenuDemo/app/src/main/)
 
 ## Lab 6
 

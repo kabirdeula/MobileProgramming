@@ -6,8 +6,8 @@
 |  2.  | [Implementation of working With multiple activities.](#lab-2)              | 2023/04/16 | ToDo   |
 |  3.  | [Implementation of Fragments.](#lab-3)                                     | 2023/04/28 | ToDo   |
 |  4.  | [Implementation of Options Menu.](#lab-4)                                  | 2023/05/02 | ToDo   |
-|  5.  | Implementation of Context Menu                                             | 2023/05/09 | ToDo   |
-|  6.  | Implementation of Popup Menu                                               | 2023/05/12 | ToDo   |
+|  5.  | [Implementation of Context Menu.](#lab-5)                                   | 2023/05/09 | ToDo   |
+|  6.  | [Implementation of Popup Menu.](#lab-6)                                    | 2023/05/12 | ToDo   |
 |  7.  | Implementation of Dialog Box                                               | 2023/05/16 | ToDo   |
 |  8.  | Implementation of ListView                                                 | 2023/05/30 | ToDo   |
 |  9.  | Implementation of GridView                                                 | 2023/06/02 | ToDo   |
@@ -482,15 +482,85 @@ menu_main.xml
 
 ### Source Code
 
+MainActivity.java
 ```java
+package com.mobileprogramming.popupmenudemo;
 
+import android.os.Bundle;
+import android.widget.*;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button btn_menu = findViewById(R.id.btn_menu);
+        btn_menu.setOnClickListener(view -> {
+            PopupMenu popupMenu = new PopupMenu(this, view);
+
+            popupMenu.getMenuInflater().inflate(R.menu.menu_main, popupMenu.getMenu());
+            popupMenu.setOnMenuItemClickListener(item -> {
+                int id = item.getItemId();
+
+                if (id == R.id.item1) {
+                    // Handle Option 1 click
+                    Toast.makeText(MainActivity.this, "Option 1 clicked", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (id == R.id.item2) {
+                    // Handle Option 2 click
+                    Toast.makeText(MainActivity.this, "Option 2 clicked", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                return false;
+            });
+            popupMenu.show();
+        });
+    }
+}
+```
+
+activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_menu"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:padding="22sp"/>
+
+</RelativeLayout>
+```
+
+menu_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/item1"
+        android:title="@string/item1"/>
+
+    <item android:id="@+id/item2"
+        android:title="@string/item2"/>
+</menu>
 ```
 
 ### Output
 
+![Output](/Lab/images/0600.jpg)
+
 [Go to Top](#lab)
 
-[Main File](/Lab/)
+[Main File](/Lab/PopupMenuDemo/app/src/main/)
 
 ## Lab 7
 

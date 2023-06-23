@@ -13,9 +13,9 @@ public class MainActivity extends AppCompatActivity {
 
         GridView view_grid = findViewById(R.id.view_grid);
 
-        String names[] = {"Mobile Programming", "Distributed System", "Applied Economics", "Advanced Java Programming", "Network Programming"};
+        String[] names = {"Mobile Programming", "Distributed System", "Applied Economics", "Advanced Java Programming", "Network Programming"};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_gridview, R.id.list_item, names);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_gridview, R.id.list_item, names);
         view_grid.setAdapter(adapter);
     }
 }

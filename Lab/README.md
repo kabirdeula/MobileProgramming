@@ -11,7 +11,7 @@
 |  7.  | [Implementation of Dialog Box.](#lab-7)                                    | 2023/05/16 | Done   |
 |  8.  | [Implementation of ListView.](#lab-8)                                      | 2023/05/30 | Done   |
 |  9.  | [Implementation of GridView.](#lab-9)                                      | 2023/06/02 | Done   |
-| 10.  | Implementation of RecyclerView                                             | 2023/06/06 | ToDo   |
+| 10.  | [Implementation of RecyclerView.](#lab-10)                                 | 2023/06/06 | Done   |
 | 11.  | Create User Registration app which stores the information in the database. | 2023/06/09 | ToDo   |
 
 ## Lab 1
@@ -700,8 +700,7 @@ MainActivity.java
 package com.mobileprogramming.gridviewdemo;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
+import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -712,9 +711,9 @@ public class MainActivity extends AppCompatActivity {
 
         GridView view_grid = findViewById(R.id.view_grid);
 
-        String names[] = {"Mobile Programming", "Distributed System", "Applied Economics", "Advanced Java Programming", "Network Programming"};
+        String[] names = {"Mobile Programming", "Distributed System", "Applied Economics", "Advanced Java Programming", "Network Programming"};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_gridview, R.id.list_item, names);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_gridview, R.id.list_item, names);
         view_grid.setAdapter(adapter);
     }
 }
@@ -764,15 +763,122 @@ activity_gridview.xml
 
 ### Source Code
 
+MainActivity.java
 ```java
+package com.mobileprogramming.recyclerviewdemo;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.*;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        RecyclerView view_recycler = findViewById(R.id.view_recycler);
+
+        String[] name = {"Mobile Programming", "Distributed System", "Applied Economics", "Advanced Java Programming", "Network Programming"};
+        String[] description = {"Chhetra Sir", "Nabaraj Sir", "Santosh Sir", "Yubaraj Sir", "Khusbu Ma'am"};
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        view_recycler.setLayoutManager(layoutManager);
+
+        RecyclerView.Adapter adapter = new RecyclerView.Adapter() {
+            @NonNull
+            @Override
+            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+                View listItem = inflater.inflate(R.layout.activity_recyclerview, parent, false);
+                return new MyViewHolder(listItem);
+            }
+
+            @Override
+            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+                MyViewHolder myViewHolder = (MyViewHolder) holder;
+                myViewHolder.tv_name.setText(name[position]);
+                myViewHolder.tv_description.setText(description[position]);
+            }
+
+            @Override
+            public int getItemCount() {
+                return name.length;
+            }
+        };
+        view_recycler.setAdapter(adapter);
+    }
+
+    private static class MyViewHolder extends RecyclerView.ViewHolder{
+        TextView tv_name, tv_description;
+
+        MyViewHolder(View itemView){
+            super(itemView);
+            tv_name = itemView.findViewById(R.id.tv_name);
+            tv_description = itemView.findViewById(R.id.tv_description);
+        }
+    }
+}
+```
+
+activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/view_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"/>
+</RelativeLayout>
+```
+
+activity_recyclerview.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:paddingTop="20dp"
+        android:paddingHorizontal="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name"
+        android:textSize="24sp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingHorizontal="20dp"
+        android:layout_marginBottom="10dp"/>
+</RelativeLayout>
 ```
 
 ### Output
 
+![Output](/Lab/images/1000.jpg)
+
 [Go to Top](#lab)
 
-[Main File](/Lab/)
+[Main File](/Lab/RecyclerViewDemo/app/src/main/)
 
 ## Lab 11
 

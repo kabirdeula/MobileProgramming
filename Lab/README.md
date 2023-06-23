@@ -183,15 +183,129 @@ activity_second.xml
 
 ### Source Code
 
+MainActivity.java
 ```java
+package com.mobileprogramming.fragmentdemo;
 
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}
+```
+
+Fragment1.java
+```java
+package com.mobileprogramming.fragementdemo;
+
+import android.os.Bundle;
+import android.view.*;
+
+import androidx.fragment.app.Fragment;
+
+public class Fragment1 extends Fragment{
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        View view = inflater.inflate(R.layout.fragment1, container, false);
+        return view;
+    }
+}
+```
+
+Fragment2.java
+```java
+package com.mobileprogramming.fragmentdemo;
+
+import android.os.Bundle;
+import android.view.*;
+
+import androidx.fragment.app.Fragment;
+
+public class Fragment2 extends Fragment{
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        View view = inflater.inflate(R.layout.fragment2, container, false);
+        return view;
+    }
+}
+```
+
+activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment1"
+        android:name="com.mobileprogramming.fragmentdemo.Fragment1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_fragment1" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment2"
+        android:name="com.mobileprogramming.fragmentdemo.Fragment2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_below="@+id/fragment1"
+        tools:layout="@layout/fragment_fragment2" />
+
+</LinearLayout>
+```
+
+fragment_fragment1.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment 1"
+        android:layout_centerInParent="true"
+        android:textSize="32sp"
+        android:textStyle="bold"/>
+</RelativeLayout>
+```
+
+fragment_fragment2.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment2"
+        android:layout_centerInParent="true"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+</RelativeLayout>
 ```
 
 ### Output
 
+![Output](/Lab/images/0300.jpg)
+
 [Go to Top](#lab)
 
-[Main File](/Lab/)
+[Main File](/Lab/FragmentDemo/app/src/main/)
 
 ## Lab 4
 

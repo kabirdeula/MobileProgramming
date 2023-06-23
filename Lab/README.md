@@ -2,15 +2,15 @@
 
 | S.N. | Topic                                                                      | Date       | Status |
 | :--: | :------------------------------------------------------------------------- | :--------- | :----- |
-|  1.  | [Development of Hello World Application](#lab-1)                           | 2023/04/11 | ToDo   |
-|  2.  | [Implementation of working With multiple activities.](#lab-2)              | 2023/04/16 | ToDo   |
-|  3.  | [Implementation of Fragments.](#lab-3)                                     | 2023/04/28 | ToDo   |
-|  4.  | [Implementation of Options Menu.](#lab-4)                                  | 2023/05/02 | ToDo   |
-|  5.  | [Implementation of Context Menu.](#lab-5)                                  | 2023/05/09 | ToDo   |
-|  6.  | [Implementation of Popup Menu.](#lab-6)                                    | 2023/05/12 | ToDo   |
-|  7.  | [Implementation of Dialog Box.](#lab-7)                                    | 2023/05/16 | ToDo   |
-|  8.  | [Implementation of ListView.](#lab-8)                                      | 2023/05/30 | ToDo   |
-|  9.  | Implementation of GridView                                                 | 2023/06/02 | ToDo   |
+|  1.  | [Development of Hello World Application](#lab-1)                           | 2023/04/11 | Done   |
+|  2.  | [Implementation of working With multiple activities.](#lab-2)              | 2023/04/16 | Done   |
+|  3.  | [Implementation of Fragments.](#lab-3)                                     | 2023/04/28 | Done   |
+|  4.  | [Implementation of Options Menu.](#lab-4)                                  | 2023/05/02 | Done   |
+|  5.  | [Implementation of Context Menu.](#lab-5)                                  | 2023/05/09 | Done   |
+|  6.  | [Implementation of Popup Menu.](#lab-6)                                    | 2023/05/12 | Done   |
+|  7.  | [Implementation of Dialog Box.](#lab-7)                                    | 2023/05/16 | Done   |
+|  8.  | [Implementation of ListView.](#lab-8)                                      | 2023/05/30 | Done   |
+|  9.  | [Implementation of GridView.](#lab-9)                                      | 2023/06/02 | Done   |
 | 10.  | Implementation of RecyclerView                                             | 2023/06/06 | ToDo   |
 | 11.  | Create User Registration app which stores the information in the database. | 2023/06/09 | ToDo   |
 
@@ -695,15 +695,70 @@ activity_listview.xml
 
 ### Source Code
 
+MainActivity.java
 ```java
+package com.mobileprogramming.gridviewdemo;
 
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        GridView view_grid = findViewById(R.id.view_grid);
+
+        String names[] = {"Mobile Programming", "Distributed System", "Applied Economics", "Advanced Java Programming", "Network Programming"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_gridview, R.id.list_item, names);
+        view_grid.setAdapter(adapter);
+    }
+}
+```
+
+activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <GridView
+        android:id="@+id/view_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2"/>
+</RelativeLayout>
+```
+
+activity_gridview.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="20dp"/>
+</RelativeLayout>
 ```
 
 ### Output
 
+![Output](/Lab/images/0900.jpg)
+
 [Go to Top](#lab)
 
-[Main File](/Lab/)
+[Main File](/Lab/GridViewDemo/app/src/main/)
 
 ## Lab 10
 

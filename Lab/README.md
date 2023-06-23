@@ -4,8 +4,8 @@
 | :--: | :------------------------------------------------------------------------- | :--------- | :----- |
 |  1.  | [Development of Hello World Application](#lab-1)                           | 2023/04/11 | ToDo   |
 |  2.  | [Implementation of working With multiple activities.](#lab-2)              | 2023/04/16 | ToDo   |
-|  3.  | Implementation of Fragments                                                | 2023/04/28 | ToDo   |
-|  4.  | Implementation of Options Menu                                             | 2023/05/02 | ToDo   |
+|  3.  | [Implementation of Fragments.](#lab-3)                                     | 2023/04/28 | ToDo   |
+|  4.  | [Implementation of Options Menu.](#lab-4)                                  | 2023/05/02 | ToDo   |
 |  5.  | Implementation of Context Menu                                             | 2023/05/09 | ToDo   |
 |  6.  | Implementation of Popup Menu                                               | 2023/05/12 | ToDo   |
 |  7.  | Implementation of Dialog Box                                               | 2023/05/16 | ToDo   |
@@ -311,15 +311,84 @@ fragment_fragment2.xml
 
 ### Source Code
 
+MainActivity.java
 ```java
+package com.mobileprogramming.optionsmenudemo;
 
+import android.os.Bundle;
+import android.view.*;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.item1) {
+            Toast.makeText(this, "Option 1 Clicked!", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.item2) {
+            Toast.makeText(this, "Option 2 Clicked!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
+```
+
+activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>
+```
+
+menu_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/item1"
+        android:title="@string/item1"/>
+
+    <item android:id="@+id/item2"
+        android:title="@string/item2"/>
+</menu>
 ```
 
 ### Output
 
+![Output](/Lab/images/0400.jpg)
+
 [Go to Top](#lab)
 
-[Main File](/Lab/)
+[Main File](/Lab/OptionsMenuDemo/app/src/main/)
 
 ## Lab 5
 

@@ -566,15 +566,63 @@ menu_main.xml
 
 ### Source Code
 
+MainActivity.java
 ```java
+package com.mobileprogramming.dialogboxdemo;
 
+import android.os.Bundle;
+import android.widget.Button;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button btn_dialog = findViewById(R.id.btn_dialog);
+        btn_dialog.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Exit App")
+                    .setMessage("Do you want to exit the App?")
+                    .setPositiveButton("Yes", (dialogInterface, i) -> finish())
+                    .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel());
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
+
+    }
+}
+```
+
+activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_dialog"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>
 ```
 
 ### Output
 
+![Output](/Lab/images/0700.jpg)
+
 [Go to Top](#lab)
 
-[Main File](/Lab/)
+[Main File](/Lab/DialogBoxDemo/app/src/main/)
 
 ## Lab 8
 

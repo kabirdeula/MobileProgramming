@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Dialog Box Demo</string>
+    <string name="btn_dialog">Open Dialog</string>
+</resources>

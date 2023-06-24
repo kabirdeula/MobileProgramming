@@ -1,18 +1,18 @@
 # Lab
 
-| S.N. | Topic                                                                      | Date       | Status |
-| :--: | :------------------------------------------------------------------------- | :--------- | :----- |
-|  1.  | [Development of Hello World Application](#lab-1)                           | 2023/04/11 | Done   |
-|  2.  | [Implementation of working With multiple activities.](#lab-2)              | 2023/04/16 | Done   |
-|  3.  | [Implementation of Fragments.](#lab-3)                                     | 2023/04/28 | Done   |
-|  4.  | [Implementation of Options Menu.](#lab-4)                                  | 2023/05/02 | Done   |
-|  5.  | [Implementation of Context Menu.](#lab-5)                                  | 2023/05/09 | Done   |
-|  6.  | [Implementation of Popup Menu.](#lab-6)                                    | 2023/05/12 | Done   |
-|  7.  | [Implementation of Dialog Box.](#lab-7)                                    | 2023/05/16 | Done   |
-|  8.  | [Implementation of ListView.](#lab-8)                                      | 2023/05/30 | Done   |
-|  9.  | [Implementation of GridView.](#lab-9)                                      | 2023/06/02 | Done   |
-| 10.  | [Implementation of RecyclerView.](#lab-10)                                 | 2023/06/06 | Done   |
-| 11.  | Create User Registration app which stores the information in the database. | 2023/06/09 | ToDo   |
+| S.N. | Topic                                                                                 | Date       | Status |
+| :--: | :------------------------------------------------------------------------------------ | :--------- | :----- |
+|  1.  | [Development of Hello World Application](#lab-1)                                      | 2023/04/11 | Done   |
+|  2.  | [Implementation of working With multiple activities.](#lab-2)                         | 2023/04/16 | Done   |
+|  3.  | [Implementation of Fragments.](#lab-3)                                                | 2023/04/28 | Done   |
+|  4.  | [Implementation of Options Menu.](#lab-4)                                             | 2023/05/02 | Done   |
+|  5.  | [Implementation of Context Menu.](#lab-5)                                             | 2023/05/09 | Done   |
+|  6.  | [Implementation of Popup Menu.](#lab-6)                                               | 2023/05/12 | Done   |
+|  7.  | [Implementation of Dialog Box.](#lab-7)                                               | 2023/05/16 | Done   |
+|  8.  | [Implementation of ListView.](#lab-8)                                                 | 2023/05/30 | Done   |
+|  9.  | [Implementation of GridView.](#lab-9)                                                 | 2023/06/02 | Done   |
+| 10.  | [Implementation of RecyclerView.](#lab-10)                                            | 2023/06/06 | Done   |
+| 11.  | [Create User Registration app which stores the information in the database.](#lab-11) | 2023/06/09 | Done   |
 
 ## Lab 1
 
@@ -892,130 +892,4 @@ activity_recyclerview.xml
 
 [Go to Top](#lab)
 
-[Main File](/Lab/)
-
-## Lab 12
-
-### Source Code
-
-```java
-
-```
-
-### Output
-
-[Go to Top](#lab)
-
-[Main File](/Lab/)
-
-## Lab 13
-
-### Source Code
-
-```java
-
-```
-
-### Output
-
-[Go to Top](#lab)
-
-[Main File](/Lab/)
-
-## Lab 14
-
-### Source Code
-
-```java
-
-```
-
-### Output
-
-[Go to Top](#lab)
-
-[Main File](/Lab/)
-
-## Lab 15
-
-### Source Code
-
-```java
-
-```
-
-### Output
-
-[Go to Top](#lab)
-
-[Main File](/Lab/)
-
-## Lab 16
-
-### Source Code
-
-```java
-
-```
-
-### Output
-
-[Go to Top](#lab)
-
-[Main File](/Lab/)
-
-## Lab 17
-
-### Source Code
-
-```java
-
-```
-
-### Output
-
-[Go to Top](#lab)
-
-[Main File](/Lab/)
-
-## Lab 18
-
-### Source Code
-
-```java
-
-```
-
-### Output
-
-[Go to Top](#lab)
-
-[Main File](/Lab/)
-
-## Lab 19
-
-### Source Code
-
-```java
-
-```
-
-### Output
-
-[Go to Top](#lab)
-
-[Main File](/Lab/)
-
-## Lab 20
-
-### Source Code
-
-```java
-
-```
-
-### Output
-
-[Go to Top](#lab)
-
-[Main File](/Lab/)
+[Main File](/Lab/UserRegister/app/src/main/)

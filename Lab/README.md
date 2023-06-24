@@ -884,11 +884,239 @@ activity_recyclerview.xml
 
 ### Source Code
 
+MainActivity.java
 ```java
+package com.mobileprogramming.userregister;
 
+import android.os.Bundle;
+import android.widget.*;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    private EditText et_name, et_username, et_email, et_password;
+    private DatabaseHelper databaseHelper;
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        databaseHelper = new DatabaseHelper(this);
+
+        et_name = findViewById(R.id.et_name);
+        et_username = findViewById(R.id.et_username);
+        et_email = findViewById(R.id.et_email);
+        et_password = findViewById(R.id.et_password);
+        Button btn_register = findViewById(R.id.btn_register);
+
+        btn_register.setOnClickListener(view -> {
+            String name = et_name.getText().toString();
+            String username = et_username.getText().toString();
+            String email = et_email.getText().toString();
+            String password = et_password.getText().toString();
+
+            long rowID = databaseHelper.insertData(name, username, email, password);
+            if (rowID != -1) {
+                Toast.makeText(getApplicationContext(), "User Registered Successfully", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Error occurred while registering user", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+```
+
+DatabaseHelper.java
+```java
+package com.mobileprogramming.userregister;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DatabaseHelper extends SQLiteOpenHelper {
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "UserDatabase";
+    private static final String TABLE_NAME = "Users";
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_USERNAME = "username";
+    private static final String COLUMN_EMAIL = "email";
+    private static final String COLUMN_PASSWORD = "password";
+
+    public DatabaseHelper(Context context){
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db){
+        String createTableQuery = "CREATE TABLE " + TABLE_NAME + " (" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_NAME + " TEXT, " +
+                COLUMN_USERNAME + " TEXT, " +
+                COLUMN_EMAIL + " TEXT, " +
+                COLUMN_PASSWORD + " TEXT)";
+        db.execSQL(createTableQuery);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
+        onCreate(db);
+    }
+
+    public long insertData(String name, String username, String email, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, name);
+        values.put(COLUMN_USERNAME, username);
+        values.put(COLUMN_EMAIL, email);
+        values.put(COLUMN_PASSWORD, password);
+        long id = db.insert(TABLE_NAME, null, values);
+        db.close();
+        return id;
+    }
+}
+```
+
+activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="32sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_margin="16dp"
+        android:layout_below="@+id/tv_title"/>
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_toEndOf="@+id/tv_name"
+        android:hint="@string/et_name"
+        android:minHeight="48dp"
+        android:inputType="textPersonName"
+        android:autofillHints="name"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_username"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_below="@+id/tv_name"/>
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_name"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_toEndOf="@+id/tv_username"
+        android:hint="@string/et_username"
+        android:minHeight="48dp"
+        android:inputType="text"
+        android:autofillHints="username"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_email"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/tv_username"/>
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_username"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_toEndOf="@+id/tv_email"
+        android:hint="@string/et_email"
+        android:minHeight="48dp"
+        android:inputType="textEmailAddress"
+        android:autofillHints="emailAddress"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <TextView
+        android:id="@+id/tv_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_password"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/tv_email"/>
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_email"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_toEndOf="@+id/tv_password"
+        android:hint="@string/et_password"
+        android:minHeight="48dp"
+        android:inputType="textPassword"
+        android:autofillHints="password"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="20dp"
+        android:maxWidth="240dp"
+        android:padding="10dp"
+        android:text="@string/btn_register"
+        android:textSize="16sp" />
+</RelativeLayout>
 ```
 
 ### Output
+
+![Output](/Lab/images/1100.jpg)
 
 [Go to Top](#lab)
 
